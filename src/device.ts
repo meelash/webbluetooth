@@ -113,18 +113,14 @@ export class BluetoothDevice extends EventDispatcher {
     /**
      * Starts watching adverts from this device (not implemented)
      */
-    public watchAdvertisements(): Promise<void> {
-        return new Promise((_resolve, reject) => {
-            reject("watchAdvertisements error: method not implemented");
-        });
+    public async watchAdvertisements(): Promise<void> {
+        throw new Error("watchAdvertisements error: method not implemented");
     }
 
     /**
      * Stops watching adverts from this device (not implemented)
      */
-    public unwatchAdvertisements() {
-        return new Promise((_resolve, reject) => {
-            reject("unwatchAdvertisements error: method not implemented");
-        });
+    public async unwatchAdvertisements() {
+        throw new Error("unwatchAdvertisements error: method not implemented");
     }
 }

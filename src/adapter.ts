@@ -36,21 +36,21 @@ import * as noble from "@abandonware/noble";
  * @hidden
  */
 export interface Adapter extends EventEmitter {
-    getEnabled: (completeFn: (enabled: boolean) => void) => void;
-    startScan: (serviceUUIDs: Array<string>, foundFn: (device: Partial<BluetoothDevice>) => void, completeFn?: () => void, errorFn?: (errorMsg: string) => void) => void;
-    stopScan: (errorFn?: (errorMsg: string) => void) => void;
-    connect: (handle: string, connectFn: () => void, disconnectFn: () => void,	errorFn?: (errorMsg: string) => void) => void;
-    disconnect: (handle: string, errorFn?: (errorMsg: string) => void) => void;
-    discoverServices: (handle: string, serviceUUIDs: Array<string>, completeFn: (services: Array<Partial<BluetoothRemoteGATTService>>) => void, errorFn?: (errorMsg: string) => void) => void;
-    discoverIncludedServices: (handle: string, serviceUUIDs: Array<string>, completeFn: (services: Array<Partial<BluetoothRemoteGATTService>>) => void, errorFn?: (errorMsg: string) => void) => void;
-    discoverCharacteristics: (handle: string, characteristicUUIDs: Array<string>, completeFn: (characteristics: Array<Partial<BluetoothRemoteGATTCharacteristic>>) => void, errorFn?: (errorMsg: string) => void) => void;
-    discoverDescriptors: (handle: string, descriptorUUIDs: Array<string>, completeFn: (descriptors: Array<Partial<BluetoothRemoteGATTDescriptor>>) => void, errorFn?: (errorMsg: string) => void) => void;
-    readCharacteristic: (handle: string, completeFn: (value: DataView) => void, errorFn?: (errorMsg: string) => void) => void;
-    writeCharacteristic: (handle: string, value: DataView, completeFn?: () => void, errorFn?: (errorMsg: string) => void) => void;
-    enableNotify: (handle: string, notifyFn: () => void, completeFn?: () => void, errorFn?: (errorMsg: string) => void) => void;
-    disableNotify: (handle: string, completeFn?: () => void, errorFn?: (errorMsg: string) => void) => void;
-    readDescriptor: (handle: string, completeFn: (value: DataView) => void, errorFn?: (errorMsg: string) => void) => void;
-    writeDescriptor: (handle: string, value: DataView, completeFn?: () => void, errorFn?: (errorMsg: string) => void) => void;
+    getEnabled: () => Promise<boolean>;
+    startScan: (serviceUUIDs: Array<string>, foundFn: (device: Partial<BluetoothDevice>) => void) => Promise<void>;
+    stopScan: () => Promise<void>;
+    connect: (handle: string, disconnectFn?: () => void) => Promise<void>;
+    disconnect: (handle: string) => Promise<void>;
+    discoverServices: (handle: string, serviceUUIDs: Array<string>) => Promise<Array<Partial<BluetoothRemoteGATTService>>>;
+    discoverIncludedServices: (handle: string, serviceUUIDs: Array<string>) => Promise<Array<Partial<BluetoothRemoteGATTService>>>;
+    discoverCharacteristics: (handle: string, characteristicUUIDs: Array<string>) => Promise<Array<Partial<BluetoothRemoteGATTCharacteristic>>>;
+    discoverDescriptors: (handle: string, descriptorUUIDs: Array<string>) => Promise<Array<Partial<BluetoothRemoteGATTDescriptor>>>;
+    readCharacteristic: (handle: string) => Promise<DataView>;
+    writeCharacteristic: (handle: string, value: DataView) => Promise<void>;
+    enableNotify: (handle: string, notifyFn?: () => void) => Promise<void>;
+    disableNotify: (handle: string) => Promise<void>;
+    readDescriptor: (handle: string) => Promise<DataView>;
+    writeDescriptor: (handle: string, value: DataView) => Promise<void>;
 }
 
 /**
@@ -85,13 +85,12 @@ export class NobleAdapter extends EventEmitter implements Adapter {
         return (noble.state === "poweredOn");
     }
 
-    private init(completeFn: () => any): void {
-        if (this.initialised) return completeFn();
+    private async init(): Promise<void> {
+        if (this.initialised) return;
         noble.on("discover", deviceInfo => {
             if (this.discoverFn) this.discoverFn(deviceInfo);
         });
         this.initialised = true;
-        completeFn();
     }
 
     private checkForError(errorFn, continueFn?, delay?: number) {
@@ -178,20 +177,18 @@ export class NobleAdapter extends EventEmitter implements Adapter {
         };
     }
 
-    public getEnabled(completeFn: (enabled: boolean) => void) {
-        function stateCB() {
-            completeFn(this.state);
-        }
-
-        if (noble.state === "unknown" || noble.state === "poweredOff") {
-            // tslint:disable-next-line:no-string-literal
-            noble["once"]("stateChange", stateCB.bind(this));
-        } else {
-            stateCB.call(this);
-        }
+    public async getEnabled(): Promise<boolean> {
+        return new Promise(resolve => {
+            if (noble.state === "unknown" || noble.state === "poweredOff") {
+                // tslint:disable-next-line:no-string-literal
+                noble["once"]("stateChange", () => resolve(this.state));
+            } else {
+                resolve(this.state)
+            }
+        });
     }
 
-    public startScan(serviceUUIDs: Array<string>, foundFn: (device: Partial<BluetoothDevice>) => void, completeFn?: () => void, errorFn?: (errorMsg: string) => void): void {
+    public startScan(serviceUUIDs: Array<string>, foundFn?: (device: Partial<BluetoothDevice>) => void): Promise<void> {
 
         this.discoverFn = deviceInfo => {
             if (this.validDevice(deviceInfo, serviceUUIDs)) {
