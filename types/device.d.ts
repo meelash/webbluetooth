@@ -1,20 +1,25 @@
-import { EventDispatcher } from "./dispatcher";
+import { TypedDispatcher } from "./dispatcher";
 import { Bluetooth } from "./bluetooth";
 import { BluetoothRemoteGATTServer } from "./server";
+import { BluetoothRemoteGATTServiceEvents } from "./service";
+/**
+ * Events raised by the BluetoothDevice class
+ */
+export interface BluetoothDeviceEvents extends BluetoothRemoteGATTServiceEvents {
+    /**
+     * GATT server disconnected event
+     */
+    gattserverdisconnected: undefined;
+    /**
+     * Advertisement received event
+     */
+    advertisementreceived: undefined;
+}
+declare const BluetoothDevice_base: new () => TypedDispatcher<BluetoothDeviceEvents>;
 /**
  * Bluetooth Device class
  */
-export declare class BluetoothDevice extends EventDispatcher {
-    /**
-     * Server Disconnected event
-     * @event
-     */
-    static EVENT_DISCONNECTED: string;
-    /**
-     * Advertisement Received event
-     * @event
-     */
-    static EVENT_ADVERT: string;
+export declare class BluetoothDevice extends BluetoothDevice_base {
     /**
      * The unique identifier of the device
      */
@@ -66,3 +71,4 @@ export declare class BluetoothDevice extends EventDispatcher {
      */
     unwatchAdvertisements(): Promise<unknown>;
 }
+export {};

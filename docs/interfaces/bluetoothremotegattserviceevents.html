@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BluetoothOptions | Node Web Bluetooth</title>
+	<title>BluetoothRemoteGATTServiceEvents | Node Web Bluetooth</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -69,25 +69,28 @@
 		<li class=" tsd-kind-interface">
 			<a href="bluetoothlescanfilterinit.html" class="tsd-kind-icon">BluetoothLEScan<wbr>Filter<wbr>Init</a>
 		</li>
-		<li class="current tsd-kind-interface">
+		<li class=" tsd-kind-interface">
 			<a href="bluetoothoptions.html" class="tsd-kind-icon">Bluetooth<wbr>Options</a>
-			<ul>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bluetoothoptions.html#devicefound" class="tsd-kind-icon">device<wbr>Found</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bluetoothoptions.html#referringdevice" class="tsd-kind-icon">referring<wbr>Device</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="bluetoothoptions.html#scantime" class="tsd-kind-icon">scan<wbr>Time</a>
-				</li>
-			</ul>
 		</li>
 		<li class=" tsd-kind-interface">
 			<a href="bluetoothremotegattcharacteristicevents.html" class="tsd-kind-icon">Bluetooth<wbr>RemoteGATTCharacteristic<wbr>Events</a>
 		</li>
-		<li class=" tsd-kind-interface">
+		<li class="current tsd-kind-interface">
 			<a href="bluetoothremotegattserviceevents.html" class="tsd-kind-icon">Bluetooth<wbr>RemoteGATTService<wbr>Events</a>
+			<ul>
+				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a href="bluetoothremotegattserviceevents.html#characteristicvaluechanged" class="tsd-kind-icon">characteristicvaluechanged</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="bluetoothremotegattserviceevents.html#serviceadded" class="tsd-kind-icon">serviceadded</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="bluetoothremotegattserviceevents.html#servicechanged" class="tsd-kind-icon">servicechanged</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="bluetoothremotegattserviceevents.html#serviceremoved" class="tsd-kind-icon">serviceremoved</a>
+				</li>
+			</ul>
 		</li>
 		<li class=" tsd-kind-interface">
 			<a href="requestdeviceoptions.html" class="tsd-kind-icon">Request<wbr>Device<wbr>Options</a>
@@ -114,7 +117,7 @@
 		<section class="tsd-panel tsd-comment">
 			<div class="tsd-comment tsd-typography">
 				<div class="lead">
-					<p>Bluetooth Options interface</p>
+					<p>Events raised by the BluetoothRemoteGATTService class</p>
 				</div>
 			</div>
 		</section>
@@ -122,7 +125,20 @@
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">BluetoothOptions</span>
+					<a href="bluetoothremotegattcharacteristicevents.html" class="tsd-signature-type">BluetoothRemoteGATTCharacteristicEvents</a>
+					<ul class="tsd-hierarchy">
+						<li>
+							<span class="target">BluetoothRemoteGATTServiceEvents</span>
+							<ul class="tsd-hierarchy">
+								<li>
+									<a href="bluetoothevents.html" class="tsd-signature-type">BluetoothEvents</a>
+								</li>
+								<li>
+									<a href="bluetoothdeviceevents.html" class="tsd-signature-type">BluetoothDeviceEvents</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</section>
@@ -133,9 +149,10 @@
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bluetoothoptions.html#devicefound" class="tsd-kind-icon">device<wbr>Found</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bluetoothoptions.html#referringdevice" class="tsd-kind-icon">referring<wbr>Device</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bluetoothoptions.html#scantime" class="tsd-kind-icon">scan<wbr>Time</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="bluetoothremotegattserviceevents.html#characteristicvaluechanged" class="tsd-kind-icon">characteristicvaluechanged</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bluetoothremotegattserviceevents.html#serviceadded" class="tsd-kind-icon">serviceadded</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bluetoothremotegattserviceevents.html#servicechanged" class="tsd-kind-icon">servicechanged</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bluetoothremotegattserviceevents.html#serviceremoved" class="tsd-kind-icon">serviceremoved</a></li>
 						</ul>
 					</section>
 				</div>
@@ -143,75 +160,52 @@
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="devicefound" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> device<wbr>Found</h3>
-				<div class="tsd-signature tsd-kind-icon">device<wbr>Found<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+				<a name="characteristicvaluechanged" class="tsd-anchor"></a>
+				<h3>characteristicvaluechanged</h3>
+				<div class="tsd-signature tsd-kind-icon">characteristicvaluechanged<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DataView</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 				<aside class="tsd-sources">
+					<p>Inherited from <a href="bluetoothremotegattcharacteristicevents.html">BluetoothRemoteGATTCharacteristicEvents</a>.<a href="bluetoothremotegattcharacteristicevents.html#characteristicvaluechanged">characteristicvaluechanged</a></p>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A <code>device found</code> callback function to allow the user to select a device</p>
-					</div>
-				</div>
-				<div class="tsd-type-declaration">
-					<h4>Type declaration</h4>
-					<ul class="tsd-parameters">
-						<li class="tsd-parameter-siganture">
-							<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-								<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>device<span class="tsd-signature-symbol">: </span><a href="../classes/bluetoothdevice.html" class="tsd-signature-type">BluetoothDevice</a>, selectFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-							</ul>
-							<ul class="tsd-descriptions">
-								<li class="tsd-description">
-									<h4 class="tsd-parameters-title">Parameters</h4>
-									<ul class="tsd-parameters">
-										<li>
-											<h5>device: <a href="../classes/bluetoothdevice.html" class="tsd-signature-type">BluetoothDevice</a></h5>
-										</li>
-										<li>
-											<h5>selectFn: <span class="tsd-signature-type">function</span></h5>
-											<ul class="tsd-parameters">
-												<li class="tsd-parameter-siganture">
-													<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-														<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-													</ul>
-													<ul class="tsd-descriptions">
-														<li class="tsd-description">
-															<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-														</li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-									</ul>
-									<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="referringdevice" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> referring<wbr>Device</h3>
-				<div class="tsd-signature tsd-kind-icon">referring<wbr>Device<span class="tsd-signature-symbol">:</span> <a href="../classes/bluetoothdevice.html" class="tsd-signature-type">BluetoothDevice</a></div>
-				<aside class="tsd-sources">
-				</aside>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>An optional referring device</p>
+						<p>Characteristic value changed event</p>
 					</div>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="scantime" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> scan<wbr>Time</h3>
-				<div class="tsd-signature tsd-kind-icon">scan<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<a name="serviceadded" class="tsd-anchor"></a>
+				<h3>serviceadded</h3>
+				<div class="tsd-signature tsd-kind-icon">serviceadded<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span></div>
 				<aside class="tsd-sources">
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The amount of seconds to scan for the device (default is 10)</p>
+						<p>Service added event</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="servicechanged" class="tsd-anchor"></a>
+				<h3>servicechanged</h3>
+				<div class="tsd-signature tsd-kind-icon">servicechanged<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span></div>
+				<aside class="tsd-sources">
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Service changed event</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="serviceremoved" class="tsd-anchor"></a>
+				<h3>serviceremoved</h3>
+				<div class="tsd-signature tsd-kind-icon">serviceremoved<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span></div>
+				<aside class="tsd-sources">
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Service removed event</p>
 					</div>
 				</div>
 			</section>

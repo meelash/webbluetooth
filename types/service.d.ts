@@ -1,25 +1,28 @@
-import { EventDispatcher } from "./dispatcher";
+import { TypedDispatcher } from "./dispatcher";
 import { BluetoothDevice } from "./device";
-import { BluetoothRemoteGATTCharacteristic } from "./characteristic";
+import { BluetoothRemoteGATTCharacteristic, BluetoothRemoteGATTCharacteristicEvents } from "./characteristic";
+/**
+ * Events raised by the BluetoothRemoteGATTService class
+ */
+export interface BluetoothRemoteGATTServiceEvents extends BluetoothRemoteGATTCharacteristicEvents {
+    /**
+     * Service added event
+     */
+    serviceadded: undefined;
+    /**
+     * Service changed event
+     */
+    servicechanged: undefined;
+    /**
+     * Service removed event
+     */
+    serviceremoved: undefined;
+}
+declare const BluetoothRemoteGATTService_base: new () => TypedDispatcher<BluetoothRemoteGATTServiceEvents>;
 /**
  * Bluetooth Remote GATT Service class
  */
-export declare class BluetoothRemoteGATTService extends EventDispatcher {
-    /**
-     * Service Added event
-     * @event
-     */
-    static EVENT_ADDED: string;
-    /**
-     * Service Changed event
-     * @event
-     */
-    static EVENT_CHANGED: string;
-    /**
-     * Service Removed event
-     * @event
-     */
-    static EVENT_REMOVED: string;
+export declare class BluetoothRemoteGATTService extends BluetoothRemoteGATTService_base {
     /**
      * The device the service is related to
      */
@@ -65,3 +68,4 @@ export declare class BluetoothRemoteGATTService extends EventDispatcher {
      */
     getIncludedServices(service?: string | number): Promise<Array<BluetoothRemoteGATTService>>;
 }
+export {};

@@ -1,5 +1,6 @@
-import { EventDispatcher } from "./dispatcher";
-import { BluetoothDevice } from "./device";
+import { TypedDispatcher } from "./dispatcher";
+import { BluetoothDevice, BluetoothDeviceEvents } from "./device";
+import { BluetoothRemoteGATTServiceEvents } from "./service";
 /**
  * Bluetooth Options interface
  */
@@ -52,9 +53,19 @@ export interface RequestDeviceOptions {
     acceptAllDevices?: boolean;
 }
 /**
+ * Events raised by the Bluetooth class
+ */
+export interface BluetoothEvents extends BluetoothDeviceEvents, BluetoothRemoteGATTServiceEvents {
+    /**
+     * Bluetooth Availability Changed event
+     */
+    availabilitychanged: boolean;
+}
+declare const Bluetooth_base: new () => TypedDispatcher<BluetoothEvents>;
+/**
  * Bluetooth class
  */
-export declare class Bluetooth extends EventDispatcher {
+export declare class Bluetooth extends Bluetooth_base {
     /**
      * Bluetooth Availability Changed event
      * @event
@@ -89,3 +100,4 @@ export declare class Bluetooth extends EventDispatcher {
      */
     cancelRequest(): Promise<void>;
 }
+export {};

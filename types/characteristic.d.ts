@@ -1,4 +1,4 @@
-import { EventDispatcher } from "./dispatcher";
+import { TypedDispatcher } from "./dispatcher";
 import { BluetoothRemoteGATTService } from "./service";
 import { BluetoothRemoteGATTDescriptor } from "./descriptor";
 /**
@@ -43,14 +43,19 @@ export interface BluetoothCharacteristicProperties {
     writableAuxiliaries: boolean;
 }
 /**
+ * Events raised by the BluetoothRemoteGATTCharacteristic class
+ */
+export interface BluetoothRemoteGATTCharacteristicEvents {
+    /**
+     * Characteristic value changed event
+     */
+    characteristicvaluechanged: DataView | undefined;
+}
+declare const BluetoothRemoteGATTCharacteristic_base: new () => TypedDispatcher<BluetoothRemoteGATTCharacteristicEvents>;
+/**
  * Bluetooth Remote GATT Characteristic class
  */
-export declare class BluetoothRemoteGATTCharacteristic extends EventDispatcher {
-    /**
-     * Characteristic Value Changed event
-     * @event
-     */
-    static EVENT_CHANGED: string;
+export declare class BluetoothRemoteGATTCharacteristic extends BluetoothRemoteGATTCharacteristic_base {
     /**
      * The service the characteristic is related to
      */
@@ -109,3 +114,4 @@ export declare class BluetoothRemoteGATTCharacteristic extends EventDispatcher {
      */
     stopNotifications(): Promise<BluetoothRemoteGATTCharacteristic>;
 }
+export {};
