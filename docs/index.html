@@ -117,44 +117,36 @@
 				<h3>Using the default bluetooth instance</h3>
 			</a>
 			<p>To use existing Web Bluetooth scripts, you can simply use the default <code>bluetooth</code> instance in place of the <code>navigator.bluetooth</code> object:</p>
-			<pre><code class="language-JavaScript"><span class="hljs-keyword">var</span> bluetooth = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webbluetooth"</span>).bluetooth;
+			<pre><code class="language-JavaScript"><span class="hljs-keyword">const</span> bluetooth = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webbluetooth"</span>).bluetooth;
 
-bluetooth.requestDevice({
+<span class="hljs-keyword">const</span> device = <span class="hljs-keyword">await</span> bluetooth.requestDevice({
     <span class="hljs-attr">filters</span>:[{ <span class="hljs-attr">services</span>:[ <span class="hljs-string">"heart_rate"</span> ] }]
-})
-.then(<span class="hljs-function"><span class="hljs-params">device</span> =&gt;</span> {
-    <span class="hljs-keyword">return</span> device.gatt.connect();
-})
-.then(<span class="hljs-function"><span class="hljs-params">server</span> =&gt;</span> {
-    ...
-})</code></pre>
+});
+
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">await</span> device.gatt.connect();
+...</code></pre>
 			<p>The first device matching the filters will be returned.</p>
 			<a href="#creating-your-own-bluetooth-instances" id="creating-your-own-bluetooth-instances" style="color: inherit; text-decoration: none;">
 				<h3>Creating your own bluetooth instances</h3>
 			</a>
 			<p>You may want to create your own instance of the <code>Bluetooth</code> class. For example, to inject a device chooser function or control the referring device:</p>
-			<pre><code class="language-JavaScript"><span class="hljs-keyword">var</span> Bluetooth = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webbluetooth"</span>).Bluetooth;
+			<pre><code class="language-JavaScript"><span class="hljs-keyword">const</span> Bluetooth = <span class="hljs-built_in">require</span>(<span class="hljs-string">"webbluetooth"</span>).Bluetooth;
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleDeviceFound</span>(<span class="hljs-params">device, selectFn</span>) </span>{
+<span class="hljs-keyword">const</span> deviceFound = <span class="hljs-function">(<span class="hljs-params">device, selectFn</span>) =&gt;</span> {
     <span class="hljs-comment">// If device can be automatically selected, do so by returning true</span>
     <span class="hljs-keyword">if</span> (device.name === <span class="hljs-string">"myName"</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
 
     <span class="hljs-comment">// Otherwise store the selectFn somewhere and execute it later to select this device</span>
-}
+};
 
-<span class="hljs-keyword">var</span> bluetooth = <span class="hljs-keyword">new</span> Bluetooth({
-    <span class="hljs-attr">deviceFound</span>: handleDeviceFound
+<span class="hljs-keyword">const</span> bluetooth = <span class="hljs-keyword">new</span> Bluetooth({ deviceFound });
+
+<span class="hljs-keyword">const</span> device = <span class="hljs-keyword">await</span> bluetooth.requestDevice({
+    <span class="hljs-attr">filters</span>:[{ <span class="hljs-attr">services</span>:[ <span class="hljs-string">"heart_rate"</span> ] }]
 });
 
-bluetooth.requestDevice({
-    <span class="hljs-attr">filters</span>:[{ <span class="hljs-attr">services</span>:[ <span class="hljs-string">"heart_rate"</span> ] }]
-})
-.then(<span class="hljs-function"><span class="hljs-params">device</span> =&gt;</span> {
-    <span class="hljs-keyword">return</span> device.gatt.connect();
-})
-.then(<span class="hljs-function"><span class="hljs-params">server</span> =&gt;</span> {
-    ...
-})</code></pre>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">await</span> device.gatt.connect();
+...</code></pre>
 			<a href="#specification" id="specification" style="color: inherit; text-decoration: none;">
 				<h2>Specification</h2>
 			</a>
