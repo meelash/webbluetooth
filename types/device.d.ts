@@ -69,6 +69,6 @@ export declare class BluetoothDevice extends BluetoothDevice_base {
     /**
      * Stops watching adverts from this device (not implemented)
      */
-    unwatchAdvertisements(): Promise<unknown>;
+    unwatchAdvertisements(): Promise<{}>;
 }
 export {};

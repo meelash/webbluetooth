@@ -72,7 +72,7 @@ export declare class BluetoothRemoteGATTCharacteristic extends BluetoothRemoteGA
     /**
      * The value of the characteristic
      */
-    get value(): DataView;
+    readonly value: DataView;
     private handle;
     private descriptors;
     /**

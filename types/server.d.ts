@@ -12,7 +12,7 @@ export declare class BluetoothRemoteGATTServer {
     /**
      * Whether the gatt server is connected
      */
-    get connected(): boolean;
+    readonly connected: boolean;
     private handle;
     private services;
     /**

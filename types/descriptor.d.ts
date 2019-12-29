@@ -15,7 +15,7 @@ export declare class BluetoothRemoteGATTDescriptor {
     /**
      * The value of the descriptor
      */
-    get value(): DataView;
+    readonly value: DataView;
     private handle;
     /**
      * Descriptor constructor
