@@ -1,6 +1,7 @@
+/// <reference types="web-bluetooth" />
 import { TypedDispatcher } from "./dispatcher";
 import { BluetoothDevice, BluetoothDeviceEvents } from "./device";
-import { BluetoothRemoteGATTServiceEvents } from "./service";
+import { W3CBluetooth } from "./interfaces";
 /**
  * Bluetooth Options interface
  */
@@ -19,53 +20,19 @@ export interface BluetoothOptions {
     referringDevice?: BluetoothDevice;
 }
 /**
- * BluetoothLE Scan Filter Init interface
+ * @hidden
  */
-export interface BluetoothLEScanFilterInit {
-    /**
-     * An array of service UUIDs to filter on
-     */
-    services?: Array<string | number>;
-    /**
-     * The device name to filter on
-     */
-    name?: string;
-    /**
-     * The device name prefix to filter on
-     */
-    namePrefix?: string;
-}
-/**
- * Request Device Options interface
- */
-export interface RequestDeviceOptions {
-    /**
-     * An array of device filters to match
-     */
-    filters?: Array<BluetoothLEScanFilterInit>;
-    /**
-     * An array of optional services to have access to
-     */
-    optionalServices?: Array<string | number>;
-    /**
-     * Whether to accept all devices
-     */
-    acceptAllDevices?: boolean;
-}
-/**
- * Events raised by the Bluetooth class
- */
-export interface BluetoothEvents extends BluetoothDeviceEvents, BluetoothRemoteGATTServiceEvents {
+export interface BluetoothEvents extends BluetoothDeviceEvents {
     /**
      * Bluetooth Availability Changed event
      */
-    availabilitychanged: boolean;
+    availabilitychanged: Event;
 }
 declare const Bluetooth_base: new () => TypedDispatcher<BluetoothEvents>;
 /**
  * Bluetooth class
  */
-export declare class Bluetooth extends Bluetooth_base {
+export declare class Bluetooth extends Bluetooth_base implements W3CBluetooth {
     /**
      * Bluetooth Availability Changed event
      * @event
@@ -78,6 +45,20 @@ export declare class Bluetooth extends Bluetooth_base {
     private deviceFound;
     private scanTime;
     private scanner;
+    private _oncharacteristicvaluechanged;
+    oncharacteristicvaluechanged: (ev: Event) => void;
+    private _onserviceadded;
+    onserviceadded: (ev: Event) => void;
+    private _onservicechanged;
+    onservicechanged: (ev: Event) => void;
+    private _onserviceremoved;
+    onserviceremoved: (ev: Event) => void;
+    private _ongattserverdisconnected;
+    ongattserverdisconnected: (ev: Event) => void;
+    private _onadvertisementreceived;
+    onadvertisementreceived: (ev: Event) => void;
+    private _onavailabilitychanged;
+    onavailabilitychanged: (ev: Event) => void;
     /**
      * Bluetooth constructor
      * @param options Bluetooth initialisation options

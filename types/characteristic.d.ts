@@ -1,61 +1,22 @@
+/// <reference types="web-bluetooth" />
 import { TypedDispatcher } from "./dispatcher";
 import { BluetoothRemoteGATTService } from "./service";
 import { BluetoothRemoteGATTDescriptor } from "./descriptor";
+import { W3CBluetoothRemoteGATTCharacteristic } from "./interfaces";
 /**
- * Bluetooth Characteristic Properties interface
- */
-export interface BluetoothCharacteristicProperties {
-    /**
-     * Broadcast property
-     */
-    broadcast: boolean;
-    /**
-     * Read property
-     */
-    read: boolean;
-    /**
-     * Write without response property
-     */
-    writeWithoutResponse: boolean;
-    /**
-     * Write property
-     */
-    write: boolean;
-    /**
-     * Notify property
-     */
-    notify: boolean;
-    /**
-     * Indicate property
-     */
-    indicate: boolean;
-    /**
-     * Authenticated signed writes property
-     */
-    authenticatedSignedWrites: boolean;
-    /**
-     * Reliable write property
-     */
-    reliableWrite: boolean;
-    /**
-     * Writable auxiliaries property
-     */
-    writableAuxiliaries: boolean;
-}
-/**
- * Events raised by the BluetoothRemoteGATTCharacteristic class
+ * @hidden
  */
 export interface BluetoothRemoteGATTCharacteristicEvents {
     /**
      * Characteristic value changed event
      */
-    characteristicvaluechanged: DataView | undefined;
+    characteristicvaluechanged: Event;
 }
 declare const BluetoothRemoteGATTCharacteristic_base: new () => TypedDispatcher<BluetoothRemoteGATTCharacteristicEvents>;
 /**
  * Bluetooth Remote GATT Characteristic class
  */
-export declare class BluetoothRemoteGATTCharacteristic extends BluetoothRemoteGATTCharacteristic_base {
+export declare class BluetoothRemoteGATTCharacteristic extends BluetoothRemoteGATTCharacteristic_base implements W3CBluetoothRemoteGATTCharacteristic {
     /**
      * The service the characteristic is related to
      */
@@ -75,6 +36,8 @@ export declare class BluetoothRemoteGATTCharacteristic extends BluetoothRemoteGA
     readonly value: DataView;
     private handle;
     private descriptors;
+    private _oncharacteristicvaluechanged;
+    oncharacteristicvaluechanged: (ev: Event) => void;
     /**
      * Characteristic constructor
      * @param init A partial class to initialise values
@@ -107,7 +70,7 @@ export declare class BluetoothRemoteGATTCharacteristic extends BluetoothRemoteGA
      * Start notifications of changes for the characteristic
      * @returns Promise containing the characteristic
      */
-    startNotifications(): Promise<BluetoothRemoteGATTCharacteristic>;
+    startNotifications(): Promise<W3CBluetoothRemoteGATTCharacteristic>;
     /**
      * Stop notifications of changes for the characteristic
      * @returns Promise containing the characteristic

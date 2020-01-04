@@ -1,28 +1,29 @@
 import { TypedDispatcher } from "./dispatcher";
 import { BluetoothDevice } from "./device";
 import { BluetoothRemoteGATTCharacteristic, BluetoothRemoteGATTCharacteristicEvents } from "./characteristic";
+import { W3CBluetoothRemoteGATTService } from "./interfaces";
 /**
- * Events raised by the BluetoothRemoteGATTService class
+ * @hidden
  */
 export interface BluetoothRemoteGATTServiceEvents extends BluetoothRemoteGATTCharacteristicEvents {
     /**
      * Service added event
      */
-    serviceadded: undefined;
+    serviceadded: Event;
     /**
      * Service changed event
      */
-    servicechanged: undefined;
+    servicechanged: Event;
     /**
      * Service removed event
      */
-    serviceremoved: undefined;
+    serviceremoved: Event;
 }
 declare const BluetoothRemoteGATTService_base: new () => TypedDispatcher<BluetoothRemoteGATTServiceEvents>;
 /**
  * Bluetooth Remote GATT Service class
  */
-export declare class BluetoothRemoteGATTService extends BluetoothRemoteGATTService_base {
+export declare class BluetoothRemoteGATTService extends BluetoothRemoteGATTService_base implements W3CBluetoothRemoteGATTService {
     /**
      * The device the service is related to
      */
@@ -38,6 +39,14 @@ export declare class BluetoothRemoteGATTService extends BluetoothRemoteGATTServi
     private handle;
     private services;
     private characteristics;
+    private _oncharacteristicvaluechanged;
+    oncharacteristicvaluechanged: (ev: Event) => void;
+    private _onserviceadded;
+    onserviceadded: (ev: Event) => void;
+    private _onservicechanged;
+    onservicechanged: (ev: Event) => void;
+    private _onserviceremoved;
+    onserviceremoved: (ev: Event) => void;
     /**
      * Service constructor
      * @param init A partial class to initialise values

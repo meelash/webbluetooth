@@ -1,8 +1,9 @@
-import { BluetoothRemoteGATTCharacteristic } from "./characteristic";
+/// <reference types="web-bluetooth" />
+import { W3CBluetoothRemoteGATTDescriptor } from "./interfaces";
 /**
  * Bluetooth Remote GATT Descriptor class
  */
-export declare class BluetoothRemoteGATTDescriptor {
+export declare class BluetoothRemoteGATTDescriptor implements W3CBluetoothRemoteGATTDescriptor {
     /**
      * The characteristic the descriptor is related to
      */

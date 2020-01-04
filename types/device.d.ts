@@ -2,24 +2,25 @@ import { TypedDispatcher } from "./dispatcher";
 import { Bluetooth } from "./bluetooth";
 import { BluetoothRemoteGATTServer } from "./server";
 import { BluetoothRemoteGATTServiceEvents } from "./service";
+import { W3CBluetoothDevice } from "./interfaces";
 /**
- * Events raised by the BluetoothDevice class
+ * @hidden
  */
 export interface BluetoothDeviceEvents extends BluetoothRemoteGATTServiceEvents {
     /**
      * GATT server disconnected event
      */
-    gattserverdisconnected: undefined;
+    gattserverdisconnected: Event;
     /**
      * Advertisement received event
      */
-    advertisementreceived: undefined;
+    advertisementreceived: Event;
 }
 declare const BluetoothDevice_base: new () => TypedDispatcher<BluetoothDeviceEvents>;
 /**
  * Bluetooth Device class
  */
-export declare class BluetoothDevice extends BluetoothDevice_base {
+export declare class BluetoothDevice extends BluetoothDevice_base implements W3CBluetoothDevice {
     /**
      * The unique identifier of the device
      */
@@ -57,6 +58,18 @@ export declare class BluetoothDevice extends BluetoothDevice_base {
      * @hidden
      */
     readonly _serviceUUIDs: Array<string>;
+    private _oncharacteristicvaluechanged;
+    oncharacteristicvaluechanged: (ev: Event) => void;
+    private _onserviceadded;
+    onserviceadded: (ev: Event) => void;
+    private _onservicechanged;
+    onservicechanged: (ev: Event) => void;
+    private _onserviceremoved;
+    onserviceremoved: (ev: Event) => void;
+    private _ongattserverdisconnected;
+    ongattserverdisconnected: (ev: Event) => void;
+    private _onadvertisementreceived;
+    onadvertisementreceived: (ev: Event) => void;
     /**
      * Device constructor
      * @param init A partial class to initialise values

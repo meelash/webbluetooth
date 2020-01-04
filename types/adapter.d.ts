@@ -1,8 +1,8 @@
 /// <reference types="node" />
+/// <reference types="web-bluetooth" />
 import { EventEmitter } from "events";
 import { BluetoothDevice } from "./device";
 import { BluetoothRemoteGATTService } from "./service";
-import { BluetoothRemoteGATTDescriptor } from "./descriptor";
 import { BluetoothRemoteGATTCharacteristic } from "./characteristic";
 /**
  * @hidden

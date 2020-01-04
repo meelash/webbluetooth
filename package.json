@@ -1,6 +1,6 @@
 {
   "name": "webbluetooth",
-  "version": "2.0.1-next.0e209c8.0",
+  "version": "2.0.1-next.4af544a.0",
   "description": "Node.js implementation of the Web Bluetooth Specification",
   "homepage": "https://github.com/thegecko/webbluetooth",
   "author": "Rob Moran <rob@thegecko.org>",
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@types/node": "^8.0.54",
+    "@types/web-bluetooth": "^0.0.5",
     "@abandonware/noble": "thegecko/noble"
   }
 }

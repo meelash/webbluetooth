@@ -1,9 +1,10 @@
 import { BluetoothDevice } from "./device";
+import { W3CBluetoothRemoteGATTServer } from "./interfaces";
 import { BluetoothRemoteGATTService } from "./service";
 /**
  * Bluetooth Remote GATT Server class
  */
-export declare class BluetoothRemoteGATTServer {
+export declare class BluetoothRemoteGATTServer implements W3CBluetoothRemoteGATTServer {
     /**
      * The device the gatt server is related to
      */
