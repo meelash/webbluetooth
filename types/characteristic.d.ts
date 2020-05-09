@@ -33,11 +33,11 @@ export declare class BluetoothRemoteGATTCharacteristic extends BluetoothRemoteGA
     /**
      * The value of the characteristic
      */
-    readonly value: DataView;
+    get value(): DataView;
     private handle;
     private descriptors;
     private _oncharacteristicvaluechanged;
-    oncharacteristicvaluechanged: (ev: Event) => void;
+    set oncharacteristicvaluechanged(fn: (ev: Event) => void);
     /**
      * Characteristic constructor
      * @param init A partial class to initialise values

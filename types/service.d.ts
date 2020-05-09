@@ -40,13 +40,13 @@ export declare class BluetoothRemoteGATTService extends BluetoothRemoteGATTServi
     private services;
     private characteristics;
     private _oncharacteristicvaluechanged;
-    oncharacteristicvaluechanged: (ev: Event) => void;
+    set oncharacteristicvaluechanged(fn: (ev: Event) => void);
     private _onserviceadded;
-    onserviceadded: (ev: Event) => void;
+    set onserviceadded(fn: (ev: Event) => void);
     private _onservicechanged;
-    onservicechanged: (ev: Event) => void;
+    set onservicechanged(fn: (ev: Event) => void);
     private _onserviceremoved;
-    onserviceremoved: (ev: Event) => void;
+    set onserviceremoved(fn: (ev: Event) => void);
     /**
      * Service constructor
      * @param init A partial class to initialise values

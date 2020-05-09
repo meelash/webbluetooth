@@ -46,19 +46,19 @@ export declare class Bluetooth extends Bluetooth_base implements W3CBluetooth {
     private scanTime;
     private scanner;
     private _oncharacteristicvaluechanged;
-    oncharacteristicvaluechanged: (ev: Event) => void;
+    set oncharacteristicvaluechanged(fn: (ev: Event) => void);
     private _onserviceadded;
-    onserviceadded: (ev: Event) => void;
+    set onserviceadded(fn: (ev: Event) => void);
     private _onservicechanged;
-    onservicechanged: (ev: Event) => void;
+    set onservicechanged(fn: (ev: Event) => void);
     private _onserviceremoved;
-    onserviceremoved: (ev: Event) => void;
+    set onserviceremoved(fn: (ev: Event) => void);
     private _ongattserverdisconnected;
-    ongattserverdisconnected: (ev: Event) => void;
+    set ongattserverdisconnected(fn: (ev: Event) => void);
     private _onadvertisementreceived;
-    onadvertisementreceived: (ev: Event) => void;
+    set onadvertisementreceived(fn: (ev: Event) => void);
     private _onavailabilitychanged;
-    onavailabilitychanged: (ev: Event) => void;
+    set onavailabilitychanged(fn: (ev: Event) => void);
     /**
      * Bluetooth constructor
      * @param options Bluetooth initialisation options

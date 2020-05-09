@@ -13,7 +13,7 @@ export declare class BluetoothRemoteGATTServer implements W3CBluetoothRemoteGATT
     /**
      * Whether the gatt server is connected
      */
-    readonly connected: boolean;
+    get connected(): boolean;
     private handle;
     private services;
     /**

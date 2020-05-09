@@ -39,7 +39,7 @@ export declare class NobleAdapter extends EventEmitter implements Adapter {
     private enabled;
     private os;
     constructor();
-    private readonly state;
+    private get state();
     private init;
     private checkForError;
     private bufferToDataView;

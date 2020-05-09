@@ -16,7 +16,7 @@ export declare class BluetoothRemoteGATTDescriptor implements W3CBluetoothRemote
     /**
      * The value of the descriptor
      */
-    readonly value: DataView;
+    get value(): DataView;
     private handle;
     /**
      * Descriptor constructor

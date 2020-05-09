@@ -59,17 +59,17 @@ export declare class BluetoothDevice extends BluetoothDevice_base implements W3C
      */
     readonly _serviceUUIDs: Array<string>;
     private _oncharacteristicvaluechanged;
-    oncharacteristicvaluechanged: (ev: Event) => void;
+    set oncharacteristicvaluechanged(fn: (ev: Event) => void);
     private _onserviceadded;
-    onserviceadded: (ev: Event) => void;
+    set onserviceadded(fn: (ev: Event) => void);
     private _onservicechanged;
-    onservicechanged: (ev: Event) => void;
+    set onservicechanged(fn: (ev: Event) => void);
     private _onserviceremoved;
-    onserviceremoved: (ev: Event) => void;
+    set onserviceremoved(fn: (ev: Event) => void);
     private _ongattserverdisconnected;
-    ongattserverdisconnected: (ev: Event) => void;
+    set ongattserverdisconnected(fn: (ev: Event) => void);
     private _onadvertisementreceived;
-    onadvertisementreceived: (ev: Event) => void;
+    set onadvertisementreceived(fn: (ev: Event) => void);
     /**
      * Device constructor
      * @param init A partial class to initialise values
@@ -82,6 +82,6 @@ export declare class BluetoothDevice extends BluetoothDevice_base implements W3C
     /**
      * Stops watching adverts from this device (not implemented)
      */
-    unwatchAdvertisements(): Promise<{}>;
+    unwatchAdvertisements(): Promise<unknown>;
 }
 export {};
