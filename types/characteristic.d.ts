@@ -67,6 +67,16 @@ export declare class BluetoothRemoteGATTCharacteristic extends BluetoothRemoteGA
      */
     writeValue(value: ArrayBuffer | ArrayBufferView): Promise<void>;
     /**
+     * Updates the value of the characteristic and waits for a response
+     * @param value The value to write
+     */
+    writeValueWithResponse(value: ArrayBuffer | ArrayBufferView): Promise<void>;
+    /**
+     * Updates the value of the characteristic without waiting for a response
+     * @param value The value to write
+     */
+    writeValueWithoutResponse(value: ArrayBuffer | ArrayBufferView): Promise<void>;
+    /**
      * Start notifications of changes for the characteristic
      * @returns Promise containing the characteristic
      */

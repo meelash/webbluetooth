@@ -132,6 +132,12 @@
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="bluetoothremotegattcharacteristic.html#writevalue" class="tsd-kind-icon">write<wbr>Value</a>
 				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="bluetoothremotegattcharacteristic.html#writevaluewithresponse" class="tsd-kind-icon">write<wbr>Value<wbr>With<wbr>Response</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="bluetoothremotegattcharacteristic.html#writevaluewithoutresponse" class="tsd-kind-icon">write<wbr>Value<wbr>Without<wbr>Response</a>
+				</li>
 			</ul>
 		</li>
 		<li class=" tsd-kind-class">
@@ -249,6 +255,8 @@
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="bluetoothremotegattcharacteristic.html#startnotifications" class="tsd-kind-icon">start<wbr>Notifications</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="bluetoothremotegattcharacteristic.html#stopnotifications" class="tsd-kind-icon">stop<wbr>Notifications</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="bluetoothremotegattcharacteristic.html#writevalue" class="tsd-kind-icon">write<wbr>Value</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="bluetoothremotegattcharacteristic.html#writevaluewithresponse" class="tsd-kind-icon">write<wbr>Value<wbr>With<wbr>Response</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="bluetoothremotegattcharacteristic.html#writevaluewithoutresponse" class="tsd-kind-icon">write<wbr>Value<wbr>Without<wbr>Response</a></li>
 						</ul>
 					</section>
 				</div>
@@ -1446,6 +1454,62 @@
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
 								<p>Updates the value of the characteristic</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>value: <span class="tsd-signature-type">ArrayBuffer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArrayBufferView</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The value to write</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="writevaluewithresponse" class="tsd-anchor"></a>
+				<h3>write<wbr>Value<wbr>With<wbr>Response</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">write<wbr>Value<wbr>With<wbr>Response<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ArrayBuffer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArrayBufferView</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Updates the value of the characteristic and waits for a response</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>value: <span class="tsd-signature-type">ArrayBuffer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArrayBufferView</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>The value to write</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="writevaluewithoutresponse" class="tsd-anchor"></a>
+				<h3>write<wbr>Value<wbr>Without<wbr>Response</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">write<wbr>Value<wbr>Without<wbr>Response<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ArrayBuffer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArrayBufferView</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Updates the value of the characteristic without waiting for a response</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
