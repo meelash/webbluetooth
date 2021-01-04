@@ -172,7 +172,8 @@ export class NobleAdapter extends EventEmitter implements Adapter {
                 rssi: deviceInfo.rssi,
                 txPower: deviceInfo.advertisement.txPowerLevel,
                 serviceData: serviceData,
-                manufacturerData: manufacturerData
+                manufacturerData: manufacturerData,
+                connectable: deviceInfo.connectable
             }
         };
     }

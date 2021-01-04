@@ -76,6 +76,7 @@ export class BluetoothDevice extends (EventDispatcher as new() => TypedDispatche
         txPower?: number;
         serviceData?: Map<string, DataView>;
         manufacturerData?: Map<string, DataView>;
+        connectable?: boolean;
     };
 
     /**
